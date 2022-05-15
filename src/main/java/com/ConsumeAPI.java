@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/ConsumeAPI")
 public class ConsumeAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Model itemObj = new Model(); 
+	Model modelObj = new Model(); 
 	
 	// Convert request parameters to a Map
 	private static Map getParasMap(HttpServletRequest request) 
@@ -64,7 +64,7 @@ public class ConsumeAPI extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-		String output = itemObj.insertItem(
+		String output = modelObj.insertItem(
 				  request.getParameter("month"), 
 				  request.getParameter("pastUnits"), 
 				  request.getParameter("currentUnits"), 
@@ -78,7 +78,7 @@ public class ConsumeAPI extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		Map paras = getParasMap(request); 
-		 String output = itemObj.updateItem(paras.get("hidItemIDSave").toString(), 
+		 String output = modelObj.updateItem(paras.get("hidItemIDSave").toString(), 
 				 							paras.get("month").toString(), 
 				 							paras.get("pastUnits").toString(), 
 				 							paras.get("currentUnits").toString(), 
@@ -91,7 +91,7 @@ public class ConsumeAPI extends HttpServlet {
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Map paras = getParasMap(request); 
-		 String output = itemObj.deleteItem(paras.get("ServiceId").toString()); 
+		 String output = modelObj.deleteItem(paras.get("ServiceId").toString()); 
 		response.getWriter().write(output);
 	}
 

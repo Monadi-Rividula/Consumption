@@ -46,7 +46,9 @@ public class Model {
 	 
 	 preparedStmt.execute(); 
 	 con.close(); 
-	 output = "Inserted successfully"; 
+	 
+	 String newconsume = readService(); 
+	 output = "{\"status\":\"success\",\"data\":\""+newconsume+"\"}"; 
 	 } 
 	 catch (Exception e) 
 	 { 
@@ -134,7 +136,10 @@ public class Model {
 	 // execute the statement
 	 preparedStmt.execute(); 
 	 con.close(); 
-	 output = "Updated successfully"; 
+	 
+	 String newconsume = readService(); 
+	 output = "{\"status\":\"success\",\"data\":\""+newconsume+"\"}"; 
+	 
 	 } catch (Exception e) { 
 	 output = "Error while updating the details"; 
 	 System.err.println(e.getMessage()); 
@@ -160,11 +165,13 @@ public class Model {
 	 // execute the statement
 	 preparedStmt.execute(); 
 	 con.close(); 
-	 output = "Deleted successfully"; 
+	 String newconsume = readService(); 
+	 output = "{\"status\":\"success\",\"data\":\""+newconsume+"\"}"; 
+ 
 	 } 
 	 catch (Exception e) 
 	 { 
-	 output = "Error while deleting the details"; 
+	 output = "{\"status\":\"error\",\"data\":\"Error while deleting the Details.\"}";
 	 System.err.println(e.getMessage()); 
 	 } 
 	 return output; 
